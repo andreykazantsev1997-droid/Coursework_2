@@ -1,5 +1,5 @@
 from abc import ABC, abstractmethod
-
+from src.airplane import Airplane
 import requests
 
 class GetInfo(ABC):
@@ -50,6 +50,7 @@ class APIAdapter(GetInfo):
         data = response.json()
         if not data:
             print(f"Страна {country} не найдена")
+            self.aeroplanes = []
             return
         geo_coordinates = data[0].get("boundingbox")
         params = {
@@ -61,7 +62,19 @@ class APIAdapter(GetInfo):
         response = requests.get(url=self.opensky_url, params=params)
 
         if response.status_code == 200:
-            self.aeroplanes = response.json()
-            print(f"Данные о самолетах для страны {country} успешно получены.")
+            res_data = response.json()
+            states = res_data.get("states")
+            self.aeroplanes = []
+            if states:
+                for state in states:
+                    plane = Airplane(
+                        country=state[2],
+                        name=state[1],
+                        speed_fly=state[9],
+                        altitude_fly=state[7]
+                    )
+                    self.aeroplanes.append(plane)
+            print(f"Данные успешно преобразованы в объекты Airplane. Найдено: {len(self.aeroplanes)}")
         else:
             print(f"Не удалось получить данные от OpenSky. Код ответа: {response.status_code}")
+            self.aeroplanes = []
