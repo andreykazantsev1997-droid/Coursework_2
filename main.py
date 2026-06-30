@@ -1,41 +1,83 @@
 from src.info import APIAdapter
+from src.file_worker import JSONPlane
 
+def print_menu():
+    print("\n" + "="*40)
+    print("УПРАВЛЕНИЕ ВОЗДУШНЫМ ПРОСТРАНСТВОМ")
+    print("="*40)
+    print("1. Загрузить данные по стране (OpenSky API)")
+    print("2. Показать ТОП самолетов по ВЫСОТЕ полета")
+    print("3. Фильтр: Найти самолеты по стране регистрации")
+    print("4. Сохранить все текущие самолеты в JSON-файл")
+    print("0. Выход из программы")
+    print("="*40)
 
 def main():
     api = APIAdapter()
+    storage = JSONPlane()
     print("=== Мониторинг воздушного пространства ===")
     print("\nПроверка подключения к API Nominatim и OpenSky...")
     if not api.connect():
         return
 
-    country = input("\nВведите название страны на английском (например, Canada, France, Germany): ").strip()
-    if not country:
-        return
+    while True:
+        print_menu()
+        choice = input("Выберите пункт: ").strip()
+        if choice == "1":
+            country = input("\nВведите название страны на английском (например, Canada, France, Germany): ").strip()
+            if country:
+                print(f"Выполняется поиск самолетов для региона: {country}...")
+                api.get_aeroplanes(country)
+            else:
+                print("Название не может быть пустым.")
 
-    print(f"\nВыполняется поиск самолетов для страны: {country}...")
-    api.get_aeroplanes(country)
+        elif choice == "2":
+            if not api.aeroplanes:
+                print("\nСначала загрузите данные (Пункт 1). Список пуст.")
+                continue
 
-    if api.aeroplanes:
-        print(f"\n[УСПЕХ] В воздушном пространстве страны {country} сейчас находится самолетов: {len(api.aeroplanes)}")
-        sorted_planes = sorted(api.aeroplanes, reverse=True)
-        print("-" * 80)
-        print(f"{'Позывной/Рейс':<15} | {'Страна борта':<20} | {'Скорость (м/с)':<15} | {'Высота (м)':<12}")
-        print("-" * 80)
+            try:
+                n = int(input(f"\nВведите количество самолетов N (доступно всего {len(api.aeroplanes)}): "))
+                if n <= 0:
+                    print("Число должно быть больше нуля.")
+                    continue
+                sorted_by_altitude = sorted(api.aeroplanes, key=lambda plane: plane._altitude_fly, reverse=True)
+                top_n = sorted_by_altitude[:n]
+                print(f"\n=== ТОП {len(top_n)} САМОЛЕТОВ ПО ВЫСОТЕ ===")
+                for p in top_n:
+                    print(
+                        f"Рейс: {p._name:<10} | Высота: {p._altitude_fly:<8.2f} м | Скорость: {p._speed_fly:<8.2f} м/с | Борт: {p._country}")
 
-        for plane in sorted_planes:
-            print(
-                f"{plane._name:<15} | {plane._country:<20} | {plane._speed_fly:<15.2f} | {plane._altitude_fly:<12.2f}")
+            except ValueError:
+                print("Ошибка! Нужно ввести целое число.")
 
-            # Демонстрация сравнения двух объектов (требование ТЗ)
-        if len(sorted_planes) >= 2:
-            print("\n=== Демонстрация работы методов сравнения ===")
-            p1 = sorted_planes[0]
-            p2 = sorted_planes[1]
-            print(f"Самый быстрый самолет: {p1._name} со скоростью {p1._speed_fly} м/с")
-            print(f"Второй по скорости: {p2._name} со скоростью {p2._speed_fly} м/с")
-            print(f"Результат проверки (Первый быстрее Второго?): {p1 > p2}")
-    else:
-        print(f"\n[ИНФО] В выбранном регионе ({country}) сейчас нет активных самолетов или страна не найдена.")
+        elif choice == "3":
+            if not api.aeroplanes:
+                print("\nСначала загрузите данные (Пункт 1). Список пуст.")
+                continue
+            reg_country = input("\nВведите страну регистрации борта (например, 'United States', 'Germany'): ").strip()
+            filtered_planes = [p for p in api.aeroplanes if reg_country.lower() in p._country.lower()]
+            if filtered_planes:
+                print(f"\n=== Найдено самолетов страны {reg_country}: {len(filtered_planes)} ===")
+                for p in filtered_planes:
+                    print(f"Рейс: {p._name:<10} | Борт: {p._country:<20} | Высота: {p._altitude_fly:<8.2f} м")
+            else:
+                print(f"\nСамолеты с регистрацией в '{reg_country}' не найдены в текущем списке")
+
+        elif choice == "4":
+            if not api.aeroplanes:
+                print("\nНет данных для сохранения. Сначала выполните поиск (Пункт 1)")
+                continue
+
+            for p in api.aeroplanes:
+                storage.add_airplane(p)
+            print(f"\nВсе самолеты ({len(api.aeroplanes)} шт.) записаны в JSON")
+
+        elif choice == "0":
+            print("\nПрограмма завершена")
+            break
+        else:
+            print("\nНеверный пункт меню")
 
 if __name__ == "__main__":
     main()
