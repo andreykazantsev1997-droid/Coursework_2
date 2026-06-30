@@ -1,0 +1,74 @@
+[
+    {
+        "country": "Hungary",
+        "name": "WZZ30DF",
+        "speed_fly": 186.29,
+        "altitude_fly": 5494.02
+    },
+    {
+        "country": "Finland",
+        "name": "FIN67",
+        "speed_fly": 239.46,
+        "altitude_fly": 10972.8
+    },
+    {
+        "country": "United States",
+        "name": "LXJ613",
+        "speed_fly": 0.0,
+        "altitude_fly": 0.0
+    },
+    {
+        "country": "Latvia",
+        "name": "BTI8BX",
+        "speed_fly": 213.1,
+        "altitude_fly": 10363.2
+    },
+    {
+        "country": "Lithuania",
+        "name": "LYLLB",
+        "speed_fly": 41.83,
+        "altitude_fly": 762.0
+    },
+    {
+        "country": "Belarus",
+        "name": "BRU945",
+        "speed_fly": 188.48,
+        "altitude_fly": 9144.0
+    },
+    {
+        "country": "Poland",
+        "name": "RYR84KW",
+        "speed_fly": 0.0,
+        "altitude_fly": 0.0
+    },
+    {
+        "country": "Finland",
+        "name": "FIN89W",
+        "speed_fly": 102.84,
+        "altitude_fly": 3665.22
+    },
+    {
+        "country": "Turkey",
+        "name": "THY9BS",
+        "speed_fly": 161.64,
+        "altitude_fly": 2964.18
+    },
+    {
+        "country": "Poland",
+        "name": "RYR5247",
+        "speed_fly": 1.54,
+        "altitude_fly": 0.0
+    },
+    {
+        "country": "Uzbekistan",
+        "name": "MFX7667",
+        "speed_fly": 28.1,
+        "altitude_fly": 10363.2
+    },
+    {
+        "country": "Sweden",
+        "name": "SVF640",
+        "speed_fly": 101.46,
+        "altitude_fly": 5059.68
+    }
+]
