@@ -24,10 +24,12 @@ def test_json_plane_add_airplane():
     assert data[0]["country"] == "France"
     os.remove(full_path)
 
+
 def test_file_worker_get_stub():
     storage = JSONPlane("test_coverage.json")
     result = storage.get_airplane({"country": "Any"})
     assert result == []
+
 
 def test_file_worker_delete_stub():
     storage = JSONPlane("test_coverage.json")
