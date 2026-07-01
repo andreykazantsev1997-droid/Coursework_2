@@ -1,0 +1,86 @@
+[
+    {
+        "country": "Finland",
+        "name": "FIN78C",
+        "speed_fly": 233.59,
+        "altitude_fly": 10972.8
+    },
+    {
+        "country": "Finland",
+        "name": "FIN9BL",
+        "speed_fly": 218.78,
+        "altitude_fly": 10363.2
+    },
+    {
+        "country": "Latvia",
+        "name": "BTI6GB",
+        "speed_fly": 207.86,
+        "altitude_fly": 7002.78
+    },
+    {
+        "country": "Austria",
+        "name": "OEFUB",
+        "speed_fly": 49.2,
+        "altitude_fly": 472.44
+    },
+    {
+        "country": "Lithuania",
+        "name": "LYLLB",
+        "speed_fly": 38.73,
+        "altitude_fly": 0.0
+    },
+    {
+        "country": "Belarus",
+        "name": "BRU962",
+        "speed_fly": 80.45,
+        "altitude_fly": 525.78
+    },
+    {
+        "country": "Denmark",
+        "name": "FIN1HA",
+        "speed_fly": 213.25,
+        "altitude_fly": 11582.4
+    },
+    {
+        "country": "Belarus",
+        "name": "BRU919",
+        "speed_fly": 27.5,
+        "altitude_fly": 9753.6
+    },
+    {
+        "country": "China",
+        "name": "CCA957",
+        "speed_fly": 53.23,
+        "altitude_fly": 10972.8
+    },
+    {
+        "country": "Russian Federation",
+        "name": "AFL1837",
+        "speed_fly": 174.1,
+        "altitude_fly": 7924.8
+    },
+    {
+        "country": "Poland",
+        "name": "RYR1502",
+        "speed_fly": 152.2,
+        "altitude_fly": 3078.48
+    },
+    {
+        "country": "China",
+        "name": "CCA908",
+        "speed_fly": 27.43,
+        "altitude_fly": 11277.6
+    },
+    {
+        "country": "Poland",
+        "name": "LOT798",
+        "speed_fly": 194.85,
+        "altitude_fly": 8595.36
+    },
+    {
+        "country": "Ireland",
+        "name": "SAS34J",
+        "speed_fly": 116.36,
+        "altitude_fly": 1120.14
+    }
+]
