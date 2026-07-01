@@ -18,7 +18,8 @@ class PlaneStorage(ABC):
 
 class JSONPlane(PlaneStorage):
     def __init__(self, filename="airplane.json"):
-        self.filename = filename
+        folder_name = "data"
+        self.filename = os.path.join(folder_name, filename)
         if not os.path.exists(self.filename):
             with open(self.filename, "w", encoding="utf-8") as f:
                 json.dump([], f)
