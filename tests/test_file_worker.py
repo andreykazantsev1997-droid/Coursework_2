@@ -1,12 +1,15 @@
-from src.file_worker import JSONPlane
-from src.airplane import Airplane
-import os
 import json
+import os
+
+from src.airplane import Airplane
+from src.file_worker import JSONPlane
+
 
 def test_json_plane():
     data = JSONPlane("test_plane.json")
     assert "data" in data.filename
     assert "test_plane.json" in data.filename
+
 
 def test_json_plane_add_airplane():
     test_file = "temp_add_test.json"

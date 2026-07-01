@@ -1,7 +1,7 @@
-from abc import ABC, abstractmethod
 import json
 import os
-from src.airplane import Airplane
+from abc import ABC, abstractmethod
+
 
 class PlaneStorage(ABC):
     @abstractmethod
@@ -15,6 +15,7 @@ class PlaneStorage(ABC):
     @abstractmethod
     def delete_airplane(self, criteria):
         pass
+
 
 class JSONPlane(PlaneStorage):
     def __init__(self, filename="airplane.json"):
@@ -31,7 +32,7 @@ class JSONPlane(PlaneStorage):
             "country": plane._country,
             "name": plane._name,
             "speed_fly": plane._speed_fly,
-            "altitude_fly": plane._altitude_fly
+            "altitude_fly": plane._altitude_fly,
         }
         data.append(plane_dict)
 
