@@ -25,11 +25,7 @@ def main():
         choice = input("Выберите пункт: ").strip()
         if choice == "1":
             country = input("\nВведите название страны на английском (например, Canada, France, Germany): ").strip()
-            if country:
-                print(f"Выполняется поиск самолетов для региона: {country}...")
-                api.get_aeroplanes(country)
-            else:
-                print("Название не может быть пустым.")
+            api.get_aeroplanes(country)
 
         elif choice == "2":
             if not api.aeroplanes:
@@ -41,12 +37,11 @@ def main():
                 if n <= 0:
                     print("Число должно быть больше нуля.")
                     continue
-                sorted_by_altitude = sorted(api.aeroplanes, key=lambda plane: plane._altitude_fly, reverse=True)
+                sorted_by_altitude = sorted(api.aeroplanes, reverse=True)
                 top_n = sorted_by_altitude[:n]
-                print(f"\n=== ТОП {len(top_n)} САМОЛЕТОВ ПО ВЫСОТЕ ===")
+                print(f"\n=== ТОП {len(top_n)} САМОЛЕТОВ ПО ХАРАКТЕРИСТИКАМ ===")
                 for p in top_n:
-                    print(
-                        f"Рейс: {p._name:<10} | Высота: {p._altitude_fly:<8.2f} м | Скорость: {p._speed_fly:<8.2f} м/с | Борт: {p._country}")
+                    print(f"Рейс: {p._name:<10} | Высота: {p._altitude_fly:<8.2f} | Скорость: {p._speed_fly:<8.2f} м/с | Борт: {p._country}")
 
             except ValueError:
                 print("Ошибка! Нужно ввести целое число.")

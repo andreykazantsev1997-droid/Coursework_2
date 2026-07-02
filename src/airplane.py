@@ -16,18 +16,21 @@ class Airplane:
     def validate_num(self, value):
         try:
             return float(value)
-        except ValueError, TypeError:
+        except (ValueError, TypeError):
             return 0.0
 
     def __lt__(self, other):
         if not isinstance(other, Airplane):
             return NotImplemented
-        return self._speed_fly < other._speed_fly
+        return (self._speed_fly, self._altitude_fly) < (
+            other._speed_fly,
+            other._altitude_fly,
+        )
 
     def __eq__(self, other):
         if not isinstance(other, Airplane):
             return False
-        return (
-            self._speed_fly == other._speed_fly
-            and self._altitude_fly == other._altitude_fly
+        return (self._speed_fly, self._altitude_fly) == (
+            other._speed_fly,
+            other._altitude_fly,
         )
