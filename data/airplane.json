@@ -82,5 +82,89 @@
         "name": "SAS34J",
         "speed_fly": 116.36,
         "altitude_fly": 1120.14
+    },
+    {
+        "country": "Finland",
+        "name": "FIN3AN",
+        "speed_fly": 202.66,
+        "altitude_fly": 10972.8
+    },
+    {
+        "country": "Turkey",
+        "name": "FHY850",
+        "speed_fly": 0.77,
+        "altitude_fly": 11277.6
+    },
+    {
+        "country": "Finland",
+        "name": "FIN1847",
+        "speed_fly": 230.66,
+        "altitude_fly": 10972.8
+    },
+    {
+        "country": "Latvia",
+        "name": "BTI421",
+        "speed_fly": 231.23,
+        "altitude_fly": 11582.4
+    },
+    {
+        "country": "Latvia",
+        "name": "BTI629",
+        "speed_fly": 231.17,
+        "altitude_fly": 10668.0
+    },
+    {
+        "country": "Lithuania",
+        "name": "LYPPL",
+        "speed_fly": 45.72,
+        "altitude_fly": 335.28
+    },
+    {
+        "country": "Lithuania",
+        "name": "LYLLB",
+        "speed_fly": 37.81,
+        "altitude_fly": 609.6
+    },
+    {
+        "country": "Lithuania",
+        "name": "VST69",
+        "speed_fly": 6.17,
+        "altitude_fly": 0.0
+    },
+    {
+        "country": "Lithuania",
+        "name": "MEISTRA2",
+        "speed_fly": 1.8,
+        "altitude_fly": 0.0
+    },
+    {
+        "country": "Lithuania",
+        "name": "GJM3327",
+        "speed_fly": 1.29,
+        "altitude_fly": 0.0
+    },
+    {
+        "country": "Poland",
+        "name": "RYR35BF",
+        "speed_fly": 122.11,
+        "altitude_fly": 10972.8
+    },
+    {
+        "country": "Poland",
+        "name": "RYR13PB",
+        "speed_fly": 6.69,
+        "altitude_fly": 0.0
+    },
+    {
+        "country": "Turkey",
+        "name": "THY6YD",
+        "speed_fly": 0.64,
+        "altitude_fly": 10050.78
+    },
+    {
+        "country": "UNKNOWN",
+        "name": "WZZ63",
+        "speed_fly": 4.12,
+        "altitude_fly": 0.0
     }
 ]
