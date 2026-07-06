@@ -1,4 +1,3 @@
-
 class Airplane:
     def __init__(self, country, name, speed_fly, altitude_fly):
         self._country = self.validate_str(country)
@@ -23,9 +22,15 @@ class Airplane:
     def __lt__(self, other):
         if not isinstance(other, Airplane):
             return NotImplemented
-        return self._speed_fly < other._speed_fly
+        return (self._speed_fly, self._altitude_fly) < (
+            other._speed_fly,
+            other._altitude_fly,
+        )
 
     def __eq__(self, other):
         if not isinstance(other, Airplane):
             return False
-        return self._speed_fly == other._speed_fly and self._altitude_fly == other._altitude_fly
+        return (self._speed_fly, self._altitude_fly) == (
+            other._speed_fly,
+            other._altitude_fly,
+        )

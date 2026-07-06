@@ -1,7 +1,7 @@
-from abc import ABC, abstractmethod
 import json
 import os
-from src.airplane import Airplane
+from abc import ABC, abstractmethod
+
 
 class PlaneStorage(ABC):
     @abstractmethod
@@ -16,9 +16,12 @@ class PlaneStorage(ABC):
     def delete_airplane(self, criteria):
         pass
 
+
 class JSONPlane(PlaneStorage):
     def __init__(self, filename="airplane.json"):
-        self.filename = filename
+        folder_name = "data"
+        self.filename = os.path.join(folder_name, filename)
+        os.makedirs(folder_name, exist_ok=True)
         if not os.path.exists(self.filename):
             with open(self.filename, "w", encoding="utf-8") as f:
                 json.dump([], f)
@@ -30,13 +33,18 @@ class JSONPlane(PlaneStorage):
             "country": plane._country,
             "name": plane._name,
             "speed_fly": plane._speed_fly,
-            "altitude_fly": plane._altitude_fly
+            "altitude_fly": plane._altitude_fly,
         }
+        if plane_dict in data:
+            print(f"Самолет {plane._name} уже существует в файле. Пропуск сохранения.")
+            return False
+
         data.append(plane_dict)
 
         with open(self.filename, "w", encoding="utf-8") as f:
             json.dump(data, f, ensure_ascii=False, indent=4)
         print(f"Самолет {plane._name} успешно сохранен в файл.")
+        return True
 
     def get_airplane(self, criteria):
         print("Метод поиска по критериям пока не используется")
